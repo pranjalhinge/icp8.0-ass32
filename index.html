@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inc/Dec Counter</title>
+    <style>
+        .product-card{
+            width: 350px;
+            border: 1px solid black;
+            margin: auto;
+            border-radius: 10px;
+
+        }
+        .img-bulb{
+            display: block;
+            margin: 20px auto;
+            height: 150px;
+            
+        }
+        .btn-buy-now{
+            display: block;
+            margin: 10px auto;
+            font-size: 20px;
+            padding: 5px 20px;
+            border-radius: 25px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .btn-quantity{
+            height: 40px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        .quantity-btn-container{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .quantity{
+            font-size: 40px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="firefly.png" class="img-bulb"/>
+
+        <div class="quantity-btn-container">
+            <img src="minus.png" class="btn-quantity" onclick="dec()"/>
+            <span class="quantity" id="quantity" >1</span>
+            <img src="plus.png" class="btn-quantity" onclick="inc()"/>
+        </div>
+
+        <button class="btn-buy-now">Buy Now</button>
+
+        <script>
+            function inc(){
+                const quantityElement = document.getElementById("quantity")
+                let quantity = parseInt(quantityElement.innerText); 
+                
+                quantityElement.innerText = ++quantity
+             }
+             function dec(){
+                const quantityElement = document.getElementById("quantity")
+                let quantity = parseInt(quantityElement.innerText); 
+                
+                quantityElement.innerText = --quantity
+             }
+        </script>
+
+    </div>
+</body>
+</html>
