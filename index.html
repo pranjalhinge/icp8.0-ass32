@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inc/Dec Counter</title>
+    <title>Inc/Dec Counter & Dice Roller</title>
     <style>
         .product-card{
             width: 350px;
@@ -40,10 +40,35 @@
         .quantity-text{
             font-size: 40px;
         }
+        .img-dice{
+            display: block;
+            margin: 50px auto;
+        }
+        .card-dice{
+             width: 200px;
+             height: 200px;
+             border: 1px solid black;
+             border-radius: 5px;
+             display: block;
+             margin: 40px auto;
+        }
+        .btn-dice{
+            justify-content: center;
+            margin-left: 80px;
+            padding: 5px 10px 5px 10px;
+            font-size: 20px;
+            background-color: tomato;
+            border-radius: 10px;
+        }
+        .player{
+            display: block;
+            margin: 80px auto;
+        }
        
     </style>
 </head>
 <body>
+    <div>
     <div class="product-card">
         <img src="galaxy.jpg" class="img-bulb"/>
 
@@ -54,6 +79,16 @@
         </div>
 
         <button class="btn-buy-now">Buy Now</button>
+    </div>
+
+        <div class="card-dice">
+            <img src="dice0.png" class="img-dice" id="img-dice"/>
+            <button class="btn-dice" onclick="roll()">Roll</button>
+                
+        </div>
+        <div>
+            <img src="player.png" class="player"/>
+        </div>
 
         <script>
             function handleQuantityChange(action){
@@ -73,6 +108,33 @@
                 quantityElement.innerText = action=='inc' ? ++quantity : --quantity
 
                 
+            }
+        </script>
+        <script>
+            function roll(){
+                const randomNumber = Math.floor(Math.random() * (7-1)) + 1
+                const imgElement = document.getElementById("img-dice")
+
+                switch(randomNumber){
+                    case 1:
+                        imgElement.src = "dice1.png"
+                        break
+                    case 2:
+                        imgElement.src = "dice2.png"
+                        break
+                    case 3:
+                        imgElement.src = "dice3.png"
+                        break
+                    case 4:
+                        imgElement.src = "dice4.png"
+                        break
+                    case 5:
+                        imgElement.src = "dice5.png"
+                        break
+                    case 6:
+                        imgElement.src = "dice6.png"
+                        break    
+                }
             }
         </script>
 
