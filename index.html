@@ -37,7 +37,7 @@
             justify-content: space-around;
             align-items: center;
         }
-        .quantity{
+        .quantity-text{
             font-size: 40px;
         }
        
@@ -45,29 +45,35 @@
 </head>
 <body>
     <div class="product-card">
-        <img src="firefly.png" class="img-bulb"/>
+        <img src="galaxy.jpg" class="img-bulb"/>
 
         <div class="quantity-btn-container">
-            <img src="minus.png" class="btn-quantity" onclick="dec()"/>
-            <span class="quantity" id="quantity" >1</span>
-            <img src="plus.png" class="btn-quantity" onclick="inc()"/>
+            <img src="minus.png" class="btn-quantity" onclick=" handleQuantityChange('dec')"/>
+            <span class="quantity-text" id="quantity-text" >1</span>
+            <img src="plus.png" class="btn-quantity" onclick=" handleQuantityChange('inc')"/>
         </div>
 
         <button class="btn-buy-now">Buy Now</button>
 
         <script>
-            function inc(){
-                const quantityElement = document.getElementById("quantity")
-                let quantity = parseInt(quantityElement.innerText); 
+            function handleQuantityChange(action){
+                const quantityElement = document.getElementById("quantity-text");
+
+                let quantity = parseInt(quantityElement.innerText);
+                if(quantity==1 && action=='dec'){
+                    alert('quantity cannot less than 1')
+                    return
+                }
+                else if(quantity==5 && action=='inc'){
+                     alert('quantity cannot more than 5')
+                     return
+
+                }
+
+                quantityElement.innerText = action=='inc' ? ++quantity : --quantity
+
                 
-                quantityElement.innerText = ++quantity
-             }
-             function dec(){
-                const quantityElement = document.getElementById("quantity")
-                let quantity = parseInt(quantityElement.innerText); 
-                
-                quantityElement.innerText = --quantity
-             }
+            }
         </script>
 
     </div>
